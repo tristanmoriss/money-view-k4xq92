@@ -47,10 +47,37 @@ h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   <section class="card"><h3>Credit cards — all banks</h3><div class="row"><span>Chase …0754</span><span class="num neg">-$0.00</span></div><div class="row"><span>Chase …1503</span><span class="num neg">-$0.00</span></div><div class="row"><span>Robinhood …5160</span><span class="num neg">-$822.08</span></div><div class="row"><span>Citi AAdvantage (manual)</span><span class="num neg">-$3,500.00</span></div></section>
   <section class="card" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
     <svg width="150" height="150" viewBox="0 0 120 120" role="img" aria-label="Spending by category">
-      <circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.78 0.14 155)" stroke-width="12" stroke-dasharray="180.3 326.7" stroke-dashoffset="-0.0" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.75 0.12 250)" stroke-width="12" stroke-dasharray="48.8 326.7" stroke-dashoffset="-180.3" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.8 0.15 85)" stroke-width="12" stroke-dasharray="13.2 326.7" stroke-dashoffset="-229.1" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.7 0.15 20)" stroke-width="12" stroke-dasharray="9.9 326.7" stroke-dashoffset="-242.3" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.72 0.12 300)" stroke-width="12" stroke-dasharray="9.3 326.7" stroke-dashoffset="-252.2" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.8 0.1 180)" stroke-width="12" stroke-dasharray="9.1 326.7" stroke-dashoffset="-261.5" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.65 0.1 260)" stroke-width="12" stroke-dasharray="7.5 326.7" stroke-dashoffset="-270.6" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="52" fill="none" stroke="oklch(0.78 0.14 155)" stroke-width="12" stroke-dasharray="6.7 326.7" stroke-dashoffset="-278.1" transform="rotate(-90 60 60)"/>
-      <text x="60" y="57" text-anchor="middle" fill="oklch(0.93 0.005 260)" font-size="15" font-weight="700">$2,060.18</text>
+      <circle class="seg" data-d="180.3 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.78 0.14 155)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-0.0" transform="rotate(-90 60 60)"/><circle class="seg" data-d="48.8 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.75 0.12 250)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-180.3" transform="rotate(-90 60 60)"/><circle class="seg" data-d="13.2 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.8 0.15 85)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-229.1" transform="rotate(-90 60 60)"/><circle class="seg" data-d="9.9 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.7 0.15 20)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-242.3" transform="rotate(-90 60 60)"/><circle class="seg" data-d="9.3 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.72 0.12 300)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-252.2" transform="rotate(-90 60 60)"/><circle class="seg" data-d="9.1 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.8 0.1 180)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-261.5" transform="rotate(-90 60 60)"/><circle class="seg" data-d="7.5 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.65 0.1 260)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-270.6" transform="rotate(-90 60 60)"/><circle class="seg" data-d="6.7 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.78 0.14 155)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-278.1" transform="rotate(-90 60 60)"/>
+      <text id="orb-total" x="60" y="57" text-anchor="middle" fill="oklch(0.93 0.005 260)" font-size="15" font-weight="700">$0</text>
       <text x="60" y="72" text-anchor="middle" fill="oklch(0.62 0.01 260)" font-size="8">per month</text>
     </svg>
+    <script>
+    (function () {
+      var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var total = "$2,060.18";
+      var segs = document.querySelectorAll('circle.seg');
+      function fill() {
+        segs.forEach(function (c, i) {
+          setTimeout(function () { c.setAttribute('stroke-dasharray', c.dataset.d); }, reduced ? 0 : 120 + 150 * i);
+        });
+        if (!reduced) {
+          var t0 = null, dur = 900;
+          function tick(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+            document.getElementById('orb-total').textContent =
+              '$' + (parseFloat(total.replace(/[$,]/g, '')) * e).toFixed(0);
+            if (p < 1) requestAnimationFrame(tick);
+            else document.getElementById('orb-total').textContent = total;
+          }
+          requestAnimationFrame(tick);
+        } else {
+          document.getElementById('orb-total').textContent = total;
+        }
+      }
+      if (document.readyState === 'complete') fill(); else addEventListener('load', fill);
+    })();
+    </script>
     <div style="flex:1;min-width:220px">
       <h3 style="margin-bottom:6px">Spending orb — share by category</h3>
       <div class="row"><span><i class="chip" style="background:oklch(0.78 0.14 155)"></i>Rent</span><span class="muted">55%</span><span class="num">$1,136.88/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.75 0.12 250)"></i>Restaurants</span><span class="muted">15%</span><span class="num">$307.77/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.8 0.15 85)"></i>Credit Card</span><span class="muted">4%</span><span class="num">$83.33/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.7 0.15 20)"></i>Gas Stations</span><span class="muted">3%</span><span class="num">$62.42/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.72 0.12 300)"></i>Supermarkets and Groceries</span><span class="muted">3%</span><span class="num">$58.75/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.8 0.1 180)"></i>Convenience Stores</span><span class="muted">3%</span><span class="num">$57.11/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.65 0.1 260)"></i>Bar</span><span class="muted">2%</span><span class="num">$47.57/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.78 0.14 155)"></i>Shops</span><span class="muted">2%</span><span class="num">$42.37/mo</span></div>
