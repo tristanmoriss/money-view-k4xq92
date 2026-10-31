@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Money — Tristan Morissette</title>
+<style>
+:root{--bg:oklch(0.16 0.01 260);--srf:oklch(0.21 0.012 260);--ink:oklch(0.93 0.005 260);
+--mut:oklch(0.62 0.01 260);--acc:oklch(0.78 0.14 155);--neg:oklch(0.68 0.19 25);--line:oklch(0.30 0.01 260)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 ui-monospace,'SF Mono',Menlo,monospace;padding:28px}
+h1{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.wide{grid-column:1/-1}
+.hero{display:flex;gap:32px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:18px}
+.hero .big{font-size:34px;font-weight:700;color:var(--acc)}
+.hero .lbl{font-size:11px;color:var(--mut);letter-spacing:.08em;text-transform:uppercase}
+.hero .col{display:flex;flex-direction:column;gap:2px}
+.hero .val{font-size:20px}
+.card{background:var(--srf);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid oklch(0.25 0.01 260);align-items:center}
+.row:last-child{border-bottom:0}
+.num{font-variant-numeric:tabular-nums}
+.chip{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px}
+.b-green{background:var(--acc)!important} .b-amber{background:oklch(0.8 0.15 85)!important} .b-red{background:var(--neg)!important}
+.pos{color:var(--acc)} .neg{color:var(--neg)}
+.muted{color:var(--mut);font-size:12px}
+.bar{flex:1;max-width:180px;height:6px;background:oklch(0.26 0.01 260);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc)}
+.foot{margin-top:20px;color:var(--mut);font-size:11px}
+</style></head><body>
+<h1>Money — Oct 30, 2026 · <a href="quests.html" style="color:var(--acc)">Quests →</a></h1>
+<div class="hero">
+  <div class="col"><span class="lbl">Net worth (incl. gold + rent collected)</span><span class="big">$19,163.47</span></div>
+  <div class="col"><span class="lbl">Cash net worth (liquid)</span><span class="big">$5,533.54</span></div>
+  <div class="col"><span class="lbl">Cash net worth (if rent collected)</span><span class="big">$7,833.54</span></div>
+  <div class="col"><span class="lbl">Projected May 2027 (cash / total)</span><span class="big">$10,530.03 / $18,359.96</span></div>
+  <div class="col"><span class="lbl">Assets</span><span class="val">$21,465.55</span></div>
+  <div class="col"><span class="lbl">Liabilities</span><span class="val neg">-$4,602.08</span></div>
+  <div class="col"><span class="lbl">True income (90d)</span><span class="val pos">$2,661.57</span></div>
+  <div class="col"><span class="lbl">True spending (90d, no rent)</span><span class="val">$2,769.89</span></div>
+  <div class="col"><span class="lbl">Monthly spend (no rent)</span><span class="val">$923.30</span></div>
+  <div class="col"><span class="lbl">Rent excluded (90d)</span><span class="val muted">$3,410.65 — parents reimburse</span></div>
+  <div class="col"><span class="lbl">Moved between own accounts (90d)</span><span class="val muted">$45,722.50</span></div>
+  <div class="col"><span class="lbl">Cash on hand (ledger)</span><span class="val pos">$0.00</span></div>
+</div>
+<div class="grid">
+  <section class="card wide"><h3>Account actions — closure schedule</h3><div class="row"><span><b>PNC</b> — Oct 31</span><span class="muted">close ASAP — $15/mo running since ~Oct 22</span></div><div class="row"><span><b>Truist</b> — Nov 1</span><span class="muted">confirm auto-closed at $0 or close</span></div><div class="row"><span><b>Citi Bank</b> — Nov 26</span><span class="muted">$15/mo fee after</span></div><div class="row"><span><b>Bank of Texas</b> — Nov 27</span><span class="muted">churn window ends</span></div><div class="row"><span><b>Regions</b> — Nov 28</span><span class="muted">$8/mo fee after</span></div><div class="row"><span><b>Credit Human</b> — Dec 8</span><span class="muted">hold lifts — move $131 out first</span></div>
+  <p class="muted" style="margin-top:8px">Bonuses in progress: Fifth Third + Chime $500/mo DD · Amex $7,500 by Jan 27 · Parents $1,200/mo income</p></section>
+  <section class="card"><h3>Chase</h3><div class="row"><span>CHASE COLLEGE …9336</span><span class="num pos">$1,384.12</span></div></section><section class="card"><h3>Wells Fargo</h3><div class="row"><span>WELLS FARGO CLEAR ACCESS BANKING ...9777 …9777</span><span class="num pos">$6,784.81</span></div></section>
+  <section class="card"><h3>Credit cards — all banks</h3><div class="row"><span>Chase …0754</span><span class="num neg">-$0.00</span></div><div class="row"><span>Chase …1503</span><span class="num neg">-$0.00</span></div><div class="row"><span>Robinhood …5160</span><span class="num neg">-$822.08</span></div><div class="row"><span>Citi AAdvantage (manual)</span><span class="num neg">-$3,500.00</span></div></section>
+  <section class="card wide"><h3>Budget — October, % of each budget spent</h3>
+  <div class="row"><span>Restaurants & Fast Food</span><span class="muted">$370.14 / $250.00</span><span class="bar"><i class="b-red" style="width:100%"></i></span><span class="num">100%</span></div><div class="row"><span>Groceries</span><span class="muted">$115.71 / $120.00</span><span class="bar"><i class="b-amber" style="width:96%"></i></span><span class="num">96%</span></div><div class="row"><span>Gas</span><span class="muted">$114.51 / $90.00</span><span class="bar"><i class="b-red" style="width:100%"></i></span><span class="num">100%</span></div><div class="row"><span>Convenience Stores</span><span class="muted">$104.60 / $60.00</span><span class="bar"><i class="b-red" style="width:100%"></i></span><span class="num">100%</span></div><div class="row"><span>Entertainment</span><span class="muted">$83.64 / $100.00</span><span class="bar"><i class="b-amber" style="width:84%"></i></span><span class="num">84%</span></div><div class="row"><span>Shops</span><span class="muted">$77.13 / $60.00</span><span class="bar"><i class="b-red" style="width:100%"></i></span><span class="num">100%</span></div><div class="row"><span>Service</span><span class="muted">$48.94 / $40.00</span><span class="bar"><i class="b-red" style="width:100%"></i></span><span class="num">100%</span></div><div class="row"><span>Gym</span><span class="muted">$39.88 / $33.00</span><span class="bar"><i class="b-red" style="width:100%"></i></span><span class="num">100%</span></div><div class="row"><span>Digital Purchase</span><span class="muted">$33.07 / $40.00</span><span class="bar"><i class="b-amber" style="width:83%"></i></span><span class="num">83%</span></div><div class="row"><span>Taxi</span><span class="muted">$13.54 / $45.00</span><span class="bar"><i class="b-green" style="width:30%"></i></span><span class="num">30%</span></div><div class="row"><span>Bars & Alcohol</span><span class="muted">$0.00 / $90.00</span><span class="bar"><i class="b-green" style="width:0%"></i></span><span class="num">0%</span></div><div class="row"><span>Cash & ATM</span><span class="muted">$0.00 / $90.00</span><span class="bar"><i class="b-green" style="width:0%"></i></span><span class="num">0%</span></div><div class="row"><span>Tobacco & Vape</span><span class="muted">$0.00 / $40.00</span><span class="bar"><i class="b-green" style="width:0%"></i></span><span class="num">0%</span></div>
+  <p class="muted" style="margin-top:8px">Month-to-date: $1,001.16 of $1,058.00 budgeted (95%) · unbudgeted extras: $336.70 · green &lt;75% · amber 75-99% · red 100%+</p></section>
+  <section class="card" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+    <svg width="150" height="150" viewBox="0 0 120 120" role="img" aria-label="Spending by category">
+      <circle class="seg" data-d="108.9 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.78 0.14 155)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-0.0" transform="rotate(-90 60 60)"/><circle class="seg" data-d="29.5 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.75 0.12 250)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-108.9" transform="rotate(-90 60 60)"/><circle class="seg" data-d="22.1 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.8 0.15 85)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-138.4" transform="rotate(-90 60 60)"/><circle class="seg" data-d="20.8 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.7 0.15 20)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-160.5" transform="rotate(-90 60 60)"/><circle class="seg" data-d="20.2 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.72 0.12 300)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-181.3" transform="rotate(-90 60 60)"/><circle class="seg" data-d="16.8 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.8 0.1 180)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-201.5" transform="rotate(-90 60 60)"/><circle class="seg" data-d="15.0 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.65 0.1 260)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-218.3" transform="rotate(-90 60 60)"/><circle class="seg" data-d="93.4 326.7" cx="60" cy="60" r="52" fill="none" stroke="oklch(0.78 0.14 155)" stroke-width="12" stroke-dasharray="0 326.7" stroke-dashoffset="-233.3" transform="rotate(-90 60 60)"/>
+      <text id="orb-total" x="60" y="57" text-anchor="middle" fill="oklch(0.93 0.005 260)" font-size="15" font-weight="700">$0</text>
+      <text x="60" y="72" text-anchor="middle" fill="oklch(0.62 0.01 260)" font-size="8">per month</text>
+    </svg>
+    <script>
+    (function () {
+      var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var total = "$923.30";
+      var segs = document.querySelectorAll('circle.seg');
+      function fill() {
+        segs.forEach(function (c, i) {
+          setTimeout(function () { c.setAttribute('stroke-dasharray', c.dataset.d); }, reduced ? 0 : 120 + 150 * i);
+        });
+        if (!reduced) {
+          var t0 = null, dur = 900;
+          function tick(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+            document.getElementById('orb-total').textContent =
+              '$' + (parseFloat(total.replace(/[$,]/g, '')) * e).toFixed(0);
+            if (p < 1) requestAnimationFrame(tick);
+            else document.getElementById('orb-total').textContent = total;
+          }
+          requestAnimationFrame(tick);
+        } else {
+          document.getElementById('orb-total').textContent = total;
+        }
+      }
+      if (document.readyState === 'complete') fill(); else addEventListener('load', fill);
+    })();
+    </script>
+    <div style="flex:1;min-width:220px">
+      <h3 style="margin-bottom:6px">Spending orb — share by category</h3>
+      <div class="row"><span><i class="chip" style="background:oklch(0.78 0.14 155)"></i>Restaurants</span><span class="muted">33%</span><span class="num">$307.77/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.75 0.12 250)"></i>Credit Card</span><span class="muted">9%</span><span class="num">$83.33/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.8 0.15 85)"></i>Gas Stations</span><span class="muted">7%</span><span class="num">$62.42/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.7 0.15 20)"></i>Supermarkets and Groceries</span><span class="muted">6%</span><span class="num">$58.75/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.72 0.12 300)"></i>Convenience Stores</span><span class="muted">6%</span><span class="num">$57.11/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.8 0.1 180)"></i>Bar</span><span class="muted">5%</span><span class="num">$47.57/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.65 0.1 260)"></i>Shops</span><span class="muted">5%</span><span class="num">$42.37/mo</span></div><div class="row"><span><i class="chip" style="background:oklch(0.78 0.14 155)"></i>Other</span><span class="muted">29%</span><span class="num">$263.97/mo</span></div>
+    </div>
+  </section>
+  <section class="card"><h3>Gold — live spot</h3>
+  <div class="row"><span>22kt: 7.13g × 0.9167 fine</span><span class="num pos">$814.56</span></div><div class="row"><span>18kt: 16.72g × 0.7500 fine</span><span class="num pos">$1,562.85</span></div><div class="row"><span>14kt: 75g × 0.5833 fine</span><span class="num pos">$5,452.53</span></div>
+  <div class="row"><span><b>Total gold</b></span><span class="num pos">$7,829.93</span></div>
+  <p class="muted" style="margin-top:8px">Spot: $3,876.40/ozt ($124.63/g) · gold-api.com Oct 30</p></section>
+  <section class="card wide"><h3>Rent flow — how rent avoids the spend math</h3>
+  <div class="row"><span>Rent is charged to the <b>Citi AAdvantage</b> card (unlinked — invisible to Plaid)</span><span class="muted">by design, for bonus minimum-spend</span></div>
+  <div class="row"><span>Parents reimburse <b>$1,200/mo</b> (rent + food share) — Tristan collects after paying</span><span class="num pos">$1,200/mo</span></div>
+  <div class="row"><span>Card-payment fee — $15 per card transaction (prepaying months splits it ~$5/mo)</span><span class="num neg">$15.00</span></div>
+  <div class="row"><span>Net monthly rent cost to Tristan</span><span class="num pos">~$15</span></div>
+  <p class="muted" style="margin-top:8px">Accuracy note: around rent time, the Citi liability below grows by ~1 month of rent until paid — update the Citi figure after each statement so net worth doesn't drift. Dashboard spend numbers already exclude rent entirely.</p></section>
+  <section class="card"><h3>Off-Plaid assets</h3><div class="row"><span>Credit Human</span><span class="num pos">$131.00</span></div><div class="row"><span>Chime (RH transfer)</span><span class="num pos">$500.00</span></div><div class="row"><span>Fifth Third (WF transfer)</span><span class="num pos">$500.00</span></div></section>
+  <section class="card"><h3>Off-Plaid liabilities</h3><div class="row"><span>Citi AAdvantage — rent charge (manual)</span><span class="num neg">-$3,500.00</span></div><div class="row"><span>CCA student org</span><span class="num neg">-$280.00</span></div></section>
+  <section class="card"><h3>Spending by category — 90 days</h3><div class="row"><span>Restaurants</span><span class="num">$923.31</span><span class="bar"><i style="width:100%"></i></span></div><div class="row"><span>Credit Card</span><span class="num">$249.98</span><span class="bar"><i style="width:27%"></i></span></div><div class="row"><span>Gas Stations</span><span class="num">$187.27</span><span class="bar"><i style="width:20%"></i></span></div><div class="row"><span>Supermarkets and Groceries</span><span class="num">$176.25</span><span class="bar"><i style="width:19%"></i></span></div><div class="row"><span>Convenience Stores</span><span class="num">$171.34</span><span class="bar"><i style="width:19%"></i></span></div><div class="row"><span>Bar</span><span class="num">$142.71</span><span class="bar"><i style="width:15%"></i></span></div><div class="row"><span>Shops</span><span class="num">$127.12</span><span class="bar"><i style="width:14%"></i></span></div><div class="row"><span>Debit</span><span class="num">$105.43</span><span class="bar"><i style="width:11%"></i></span></div><div class="row"><span>Gyms and Fitness Centers</span><span class="num">$97.98</span><span class="bar"><i style="width:11%"></i></span></div><div class="row"><span>Sports and Recreation Camps</span><span class="num">$83.64</span><span class="bar"><i style="width:9%"></i></span></div><div class="row"><span>Digital Purchase</span><span class="num">$80.04</span><span class="bar"><i style="width:9%"></i></span></div><div class="row"><span>Tobacco</span><span class="num">$68.26</span><span class="bar"><i style="width:7%"></i></span></div><div class="row"><span>Fast Food</span><span class="num">$66.57</span><span class="bar"><i style="width:7%"></i></span></div><div class="row"><span>Lodging</span><span class="num">$50.60</span><span class="bar"><i style="width:5%"></i></span></div><div class="row"><span>Service</span><span class="num">$48.94</span><span class="bar"><i style="width:5%"></i></span></div><div class="row"><span>Taxi</span><span class="num">$45.40</span><span class="bar"><i style="width:5%"></i></span></div><div class="row"><span>Hardware Store</span><span class="num">$39.01</span><span class="bar"><i style="width:4%"></i></span></div><div class="row"><span>Tolls and Fees</span><span class="num">$29.99</span><span class="bar"><i style="width:3%"></i></span></div><div class="row"><span>Food and Beverage</span><span class="num">$23.13</span><span class="bar"><i style="width:3%"></i></span></div><div class="row"><span>Department Stores</span><span class="num">$16.23</span><span class="bar"><i style="width:2%"></i></span></div><div class="row"><span>Food and Beverage Store</span><span class="num">$15.62</span><span class="bar"><i style="width:2%"></i></span></div><div class="row"><span>Arts and Entertainment</span><span class="num">$6.81</span><span class="bar"><i style="width:1%"></i></span></div><div class="row"><span>Food and Drink</span><span class="num">$6.45</span><span class="bar"><i style="width:1%"></i></span></div><div class="row"><span>Pharmacies</span><span class="num">$5.83</span><span class="bar"><i style="width:1%"></i></span></div><div class="row"><span>Bank Fees</span><span class="num">$1.98</span><span class="bar"><i style="width:0%"></i></span></div></section>
+  <section class="card"><h3>Top merchants — 90 days</h3><div class="row"><span>CHASE CREDIT CRD AUTOPAY PPD</span><span class="muted">x1</span><span class="num">$187.67</span></div><div class="row"><span>H-E-B</span><span class="muted">x9</span><span class="num">$139.04</span></div><div class="row"><span>Klarna</span><span class="muted">x5</span><span class="num">$127.12</span></div><div class="row"><span>Shop N'Go</span><span class="muted">x3</span><span class="num">$104.82</span></div><div class="row"><span>Headway</span><span class="muted">x3</span><span class="num">$100.00</span></div><div class="row"><span>Crunch Fitness</span><span class="muted">x3</span><span class="num">$97.98</span></div><div class="row"><span>Topgolf</span><span class="muted">x2</span><span class="num">$83.64</span></div><div class="row"><span>Gringo's Mexican Kitchen</span><span class="muted">x1</span><span class="num">$80.23</span></div><div class="row"><span>eBay</span><span class="muted">x3</span><span class="num">$80.04</span></div><div class="row"><span>Bubba's 33</span><span class="muted">x1</span><span class="num">$80.00</span></div><div class="row"><span>Prizepicks</span><span class="muted">x2</span><span class="num">$75.00</span></div><div class="row"><span>Mambos</span><span class="muted">x1</span><span class="num">$67.00</span></div></section>
+  <section class="card"><h3>Subscriptions detected</h3>
+  <div class="row"><span>Crunch Fitness</span><span class="num">$39.88/mo</span></div>
+  <div class="row"><span>No other recurring charges found</span><span class="muted">Chase · RH · WF, 90d scan</span></div>
+  <p class="muted" style="margin-top:8px">Caveat: Citi AAdvantage card is not linked — anything auto-billed there is invisible.</p></section>
+</div>
+<p class="foot">Live Plaid data · regenerate: python3 ~/.hermes/profiles/money/scripts/bank_dashboard.py</p>
+</body></html>
